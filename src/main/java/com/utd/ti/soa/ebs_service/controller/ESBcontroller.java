@@ -40,7 +40,7 @@ public class ESBcontroller {
 
         // Enviar solicitud a servicio externo
         String response = webClient.post()
-                .uri("https://users-production-bfce.up.railway.app/api/users/create")
+                .uri("https://users-production-eef4.up.railway.app/api/users/create")
                 .bodyValue(user)
                 .retrieve()
                 .bodyToMono(String.class)
@@ -65,7 +65,7 @@ public class ESBcontroller {
         System.out.println("Updating user with ID: " + id + " Data: " + user);
 
         String response = webClient.patch()
-                .uri("https://users-production-bfce.up.railway.app/api/users/" + id)
+                .uri("https://users-production-eef4.up.railway.app/api/users/" + id)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(user))
                 .retrieve()
@@ -87,7 +87,7 @@ public class ESBcontroller {
                     .body("Token invalido o expirado");
         }
         String response = webClient.get()
-                .uri("https://users-production-bfce.up.railway.app/api/users/all")
+                .uri("https://users-production-eef4.up.railway.app/api/users/all")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)  // Asegúrate de que el token esté bien formado
                 .retrieve()
                 .bodyToMono(String.class)
@@ -107,7 +107,7 @@ public class ESBcontroller {
                     .body("Token invalido o expirado");
         }
         String response = webClient.delete()
-                .uri("https://users-production-bfce.up.railway.app/api/users/" + id)
+                .uri("https://users-production-eef4.up.railway.app/api/users/" + id)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
@@ -121,7 +121,7 @@ public class ESBcontroller {
         System.out.println("Token recibido: " + token);
 
         String response = webClient.post()
-                .uri("https://users-production-bfce.up.railway.app/api/users/login")  // Aquí es donde debe apuntar
+                .uri("https://users-production-eef4.up.railway.app/api/users/login")  // Aquí es donde debe apuntar
                 .bodyValue(loginRequest)
                 .retrieve()
                 .bodyToMono(String.class)
