@@ -40,7 +40,7 @@ public class ESBClientcontroller {
 
         // Enviar solicitud a servicio externo
         String response = webClient.post()
-                .uri("http://clients:5002/api/clientes/")
+                .uri("http://clients-production-1e17.up.railway.app/api/clientes/")
                 .bodyValue(client)
                 .retrieve()
                 .bodyToMono(String.class)
@@ -65,7 +65,7 @@ public class ESBClientcontroller {
         System.out.println("Updating client with ID: " + id + " Data: " + client);
 
         String response = webClient.patch()
-                .uri("http://clients:5002/api/clientes/" + id)
+                .uri("http://clients-production-1e17.up.railway.app/api/clientes/" + id)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(client))
                 .retrieve()
@@ -87,7 +87,7 @@ public class ESBClientcontroller {
                     .body("Token invalido o expirado");
         }
         String response = webClient.get()
-                .uri("http://clients:5002/api/clientes/all")
+                .uri("http://clients-production-1e17.up.railway.app/api/clientes/all")
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
@@ -106,7 +106,7 @@ public class ESBClientcontroller {
                     .body("Token invalido o expirado");
         }
         String response = webClient.delete()
-                .uri("http://clients:5002/api/clientes/" + id)
+                .uri("http://clients-production-1e17.up.railway.app/api/clientes/" + id)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
